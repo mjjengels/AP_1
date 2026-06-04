@@ -1,12 +1,11 @@
 function [W,Ahat,Shat,theta_hat,t,theta_grid,Y] = minimax_from_freq(X,f_hat,Delta,theta_grid)
-
-if nargin < 3 || isempty(Delta)
-    Delta = 1/2;
-end
-
-if nargin < 4 || isempty(theta_grid)
-    theta_grid = -90:0.1:90;
-end
+%   First reconstruct Shat from estimated frequencies.
+%   Then estimate Ahat by least squares:
+%
+%       Ahat = X Shat^H (Shat Shat^H)^(-1)
+%
+%   The directions are estimated from the phase slope of Ahat.
+%   Finally, one minimax beamformer is computed for each source using CVX.
 
 [M,N] = size(X);
 f_hat = f_hat(:);
