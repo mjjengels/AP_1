@@ -285,7 +285,7 @@ legend('Beamformer 1','Beamformer 2','True DOA 1','True DOA 2','Location','best'
 title('Minimax zero-forcing beamformer spatial responses');
 
 
-[W_freq,Ahat,Shat,theta_freq,t_freq,theta_grid,Y_freq] = minimax_from_freq(X,f_hat);
+[W_freq,Ahat,Shat,theta_freq,t_freq,theta_grid,Y_freq] = minimax_from_freq(X,f_hat, Delta, theta_grid);
 
 figure;
 plot(theta_grid,Y_freq(1,:),'LineWidth',1.5); hold on;
